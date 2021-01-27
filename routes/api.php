@@ -26,6 +26,13 @@ Route::group([
 Route::middleware('auth:api')->group(function () {
   Route::post('/logout', 'App\Http\Controllers\Auth\AuthController@logout')->name('logout.api');
 
-  Route::get('/users', 'App\Http\Controllers\UserController@index')->middleware('api.admin')->name('users.index');
-  Route::get('/users/find', 'App\Http\Controllers\UserController@find')->middleware('api.admin')->name('users.find');
+  Route::prefix('users')->group(function () {
+    Route::get('/', 'App\Http\Controllers\UserController@index')->middleware('api.admin')->name('users.index');
+    Route::get('/find', 'App\Http\Controllers\UserController@find')->middleware('api.admin')->name('users.find');
+  });
+
+  Route::prefix('hotels')->group(function () {
+    Route::get('/', 'App\Http\Controllers\HotelController@index')->middleware('api.admin')->name('hotels.index');
+    Route::get('/{id}', 'App\Http\Controllers\HotelController@find')->middleware('api.admin')->name('hotels.find');
+  });
 });
