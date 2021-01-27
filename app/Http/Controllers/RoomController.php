@@ -204,6 +204,77 @@ class RoomController extends Controller
       }
     }
 
+    /**
+   * @OA\Put(
+   ** path="/api/rooms/{id}",
+    *   tags={"Rooms"},
+    *   summary="Update room",
+    *   description="Update room",
+    *   operationId="id",
+    *
+    *   @OA\Parameter(
+    *      name="id",
+    *      in="path",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="integer",
+    *      )
+    *   ),
+    *  @OA\Parameter(
+    *      name="name",
+    *      in="query",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="string"
+    *      )
+    *   ),
+    *  @OA\Parameter(
+    *      name="numberBeds",
+    *      in="query",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="string"
+    *      )
+    *   ),
+    *  @OA\Parameter(
+    *      name="description",
+    *      in="query",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="string"
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=200,
+    *       description="Success",
+    *      @OA\MediaType(
+    *           mediaType="application/json",
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=401,
+    *       description="Unauthenticated"
+    *   ),
+    *   @OA\Response(
+    *      response=400,
+    *      description="Bad Request"
+    *   ),
+    *   @OA\Response(
+    *      response=404,
+    *      description="Not found"
+    *   ),
+    *      @OA\Response(
+    *          response=403,
+    *          description="Forbidden"
+    *      )
+    *)
+    **/
+
+  /**
+   * Update user api.
+   *
+   * @return \Illuminate\Http\Response
+   */
     public function update(UpdateRoomRequest $request)
     {
       try {

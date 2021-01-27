@@ -29,6 +29,7 @@ Route::middleware('auth:api')->group(function () {
   Route::prefix('users')->group(function () {
     Route::get('/', 'App\Http\Controllers\UserController@index')->middleware('api.admin')->name('users.index');
     Route::get('/find', 'App\Http\Controllers\UserController@find')->middleware('api.admin')->name('users.find');
+    Route::put('/', 'App\Http\Controllers\UserController@update')->middleware('api.admin')->name('users.update');
   });
 
   Route::prefix('hotels')->group(function () {

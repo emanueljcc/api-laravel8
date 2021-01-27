@@ -53,9 +53,9 @@ class AuthController extends Controller
     *      )
     *   ),
     *   @OA\Parameter(
-    *      name="type",
+    *      name="role_id",
     *      in="query",
-    *      description="default=0 - 0 is Normal, 1 admin, 2 superAdmin",
+    *      description="default=1 - 0 is Normal, 1 admin",
     *      required=false,
     *      @OA\Schema(
     *           type="string"
