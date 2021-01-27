@@ -34,5 +34,14 @@ Route::middleware('auth:api')->group(function () {
   Route::prefix('hotels')->group(function () {
     Route::get('/', 'App\Http\Controllers\HotelController@index')->middleware('api.admin')->name('hotels.index');
     Route::get('/{id}', 'App\Http\Controllers\HotelController@find')->middleware('api.admin')->name('hotels.find');
+    Route::post('/', 'App\Http\Controllers\HotelController@store')->middleware('api.admin')->name('hotels.store');
+    Route::delete('/{id}', 'App\Http\Controllers\HotelController@remove')->middleware('api.admin')->name('hotels.remove');
+  });
+
+  Route::prefix('rooms')->group(function () {
+    Route::get('/', 'App\Http\Controllers\RoomController@index')->middleware('api.admin')->name('rooms.index');
+    Route::get('/{id}', 'App\Http\Controllers\RoomController@find')->middleware('api.admin')->name('rooms.find');
+    Route::post('/', 'App\Http\Controllers\RoomController@store')->middleware('api.admin')->name('rooms.store');
+    Route::delete('/{id}', 'App\Http\Controllers\RoomController@remove')->middleware('api.admin')->name('rooms.remove');
   });
 });
