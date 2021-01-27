@@ -12,13 +12,22 @@ class Room extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $hidden = ['deleted_at', 'created_at', 'updated_at'];
+
     protected $fillable = [
       'hotel_id',
-      'name'
+      'name',
+      'numberBeds',
+      'description'
     ];
 
     public function hotel()
     {
       return $this->belongsTo(Hotel::class);
+    }
+
+    public function userRoom()
+    {
+      return $this->hasMany(UserRoom::class);
     }
 }

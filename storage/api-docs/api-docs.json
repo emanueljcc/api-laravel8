@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API Hotels",
-        "description": "Collection POSTMAN - LINK COLLECTION POSTMAN",
+        "description": "Collection POSTMAN - https://www.getpostman.com/collections/913d52f92a89811af5ee",
         "version": "0.1"
     },
     "paths": {
@@ -583,6 +583,51 @@
                 "parameters": [
                     {
                         "name": "room_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user-room/{user_id}": {
+            "delete": {
+                "tags": [
+                    "UserRooms"
+                ],
+                "summary": "Delete user room for user_id",
+                "description": "Delete user room for user_id",
+                "operationId": "user_id",
+                "parameters": [
+                    {
+                        "name": "user_id",
                         "in": "query",
                         "required": true,
                         "schema": {

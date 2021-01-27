@@ -39,7 +39,11 @@ To generate the API documentation through Swagger use the following command:
 
 `php artisan l5-swagger:generate`
 
+## See documentation generated with Swagger
+
 And to see the list of available endpoints, it is the following link:
 http://localhost:8000/api/documentation
 
 To understand more about the Swagger documentation in Laravel, you can view the documentation at the following link: https://github.com/DarkaOnLine/L5-Swagger
+
+TODO: AGREGAR DOCUMENTACION EN README, LINK DE LA COLLECTION, IMAGENES DE LA COLLECTION, EJEMPLOS DE RESPUESTA DE LA API...

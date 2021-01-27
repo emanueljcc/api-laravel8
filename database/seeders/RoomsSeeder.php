@@ -11,7 +11,9 @@ class RoomsSeeder extends Seeder
   public $rooms = [
     [
       'hotel_id' => 1,
-      'name' => 'Room #1'
+      'name' => 'Room #1',
+      'numberBeds' => 2,
+      'description' => 'General description of the room'
     ]
   ];
 
@@ -28,6 +30,8 @@ class RoomsSeeder extends Seeder
       Room::insert([
         'hotel_id' => $room['hotel_id'],
         'name' => $room['name'],
+        'numberBeds' => $room['numberBeds'],
+        'description' => $room['description'],
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
         'deleted_at' => null

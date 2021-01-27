@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
   /**
-   * @OA\Info(title="API Hotels", description="Collection POSTMAN - LINK COLLECTION POSTMAN", version="0.1")
+   * @OA\Info(title="API Hotels", description="Collection POSTMAN - https://www.getpostman.com/collections/913d52f92a89811af5ee", version="0.1")
    * @OA\Schemes(format="http")
    * @OA\SecurityScheme(
    *      securityScheme="bearerAuth",

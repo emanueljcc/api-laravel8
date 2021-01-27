@@ -42,10 +42,12 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/', 'App\Http\Controllers\RoomController@index')->middleware('api.admin')->name('rooms.index');
     Route::get('/{id}', 'App\Http\Controllers\RoomController@find')->middleware('api.admin')->name('rooms.find');
     Route::post('/', 'App\Http\Controllers\RoomController@store')->middleware('api.admin')->name('rooms.store');
+    Route::put('/{id}', 'App\Http\Controllers\RoomController@update')->middleware('api.admin')->name('rooms.update');
     Route::delete('/{id}', 'App\Http\Controllers\RoomController@remove')->middleware('api.admin')->name('rooms.remove');
   });
 
   Route::prefix('user-room')->group(function () {
     Route::post('/', 'App\Http\Controllers\UserRoomController@store')->name('userRoom.store');
+    Route::delete('/{userId}', 'App\Http\Controllers\UserRoomController@remove')->name('userRoom.remove');
   });
 });

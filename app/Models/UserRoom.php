@@ -12,6 +12,8 @@ class UserRoom extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $hidden = ['deleted_at', 'created_at', 'updated_at'];
+
     protected $fillable = [
       'room_id',
       'user_id'

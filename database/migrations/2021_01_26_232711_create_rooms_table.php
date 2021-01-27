@@ -17,6 +17,8 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->bigInteger('hotel_id')->unsigned()->index();
             $table->string('name');
+            $table->integer('numberBeds');
+            $table->text('description');
 
             $table->softDeletes();
             $table->timestamps();

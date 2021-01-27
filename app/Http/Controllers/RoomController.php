@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateRoomRequest;
+use App\Http\Requests\UpdateRoomRequest;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\Room;
@@ -52,7 +53,7 @@ class RoomController extends Controller
     public function index()
     {
       try {
-        $rooms = Room::with('hotel')->get();
+        $rooms = Room::with('hotel', 'userRoom.user.role')->get();
 
         return $this->responseJson(200, 'Success', $rooms);
       } catch (\Exception $e) {
@@ -113,7 +114,7 @@ class RoomController extends Controller
     {
       try {
         $id = $request->id;
-        $room = Room::with('hotel')->where('id', $id)->first();
+        $room = Room::with('hotel', 'userRoom.user.role')->where('id', $id)->first();
 
         if (!$room) {
           return $this->responseJson(401, 'Room not found.');
@@ -193,9 +194,26 @@ class RoomController extends Controller
         $room = new Room();
         $room->hotel_id = $request->hotel_id;
         $room->name = $request->name;
+        $room->numberBeds = $request->numberBeds;
+        $room->description = $request->description;
         $room->save();
 
         return $this->responseJson(200, 'Room created successfuly', $room);
+      } catch (\Exception $e) {
+        return $this->responseJson(500, $e->getMessage());
+      }
+    }
+
+    public function update(UpdateRoomRequest $request)
+    {
+      try {
+        $room = Room::find($request->id);
+        $room->name = $request->name;
+        $room->numberBeds = $request->numberBeds;
+        $room->description = $request->description;
+        $room->save();
+
+        return $this->responseJson(200, 'Room updated successfuly', $room);
       } catch (\Exception $e) {
         return $this->responseJson(500, $e->getMessage());
       }

@@ -250,7 +250,7 @@ class AuthController extends Controller
     try {
       $token = $request->user()->token();
       $token->revoke();
-      return $this->responseJson(200, 'Você foi desconectado com sucesso!');
+      return $this->responseJson(200, 'Logout successfuly.');
     } catch (\Throwable $th) {
       throw $th;
     }

@@ -52,7 +52,7 @@ class HotelController extends Controller
     public function index()
     {
       try {
-        $hotels = Hotel::with('rooms')->get();
+        $hotels = Hotel::with('rooms.userRoom.user.role')->get();
 
         return $this->responseJson(200, 'Success', $hotels);
       } catch (\Exception $e) {
@@ -113,7 +113,7 @@ class HotelController extends Controller
     {
       try {
         $id = $request->id;
-        $hotel = Hotel::with('rooms')->where('id', $id)->first();
+        $hotel = Hotel::with('rooms.userRoom.user.role')->where('id', $id)->first();
 
         if (!$hotel) {
           return $this->responseJson(401, 'Room not found.');
