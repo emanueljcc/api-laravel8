@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
   /**
-   * @OA\Info(title="API Hotels", description="Collection POSTMAN - COLLECTION POSTMAN", version="0.1")
+   * @OA\Info(title="API Hotels", description="Collection POSTMAN - LINK COLLECTION POSTMAN", version="0.1")
    * @OA\Schemes(format="http")
    * @OA\SecurityScheme(
    *      securityScheme="bearerAuth",
@@ -27,6 +27,18 @@ class Controller extends BaseController
    * @OA\Tag(
    *     name="Users",
    *     description="Users endpoints",
+   * )
+   * @OA\Tag(
+   *     name="Hotels",
+   *     description="Hotels endpoints",
+   * )
+   * @OA\Tag(
+   *     name="Rooms",
+   *     description="Rooms endpoints",
+   * )
+   * @OA\Tag(
+   *     name="UserRooms",
+   *     description="UserRooms endpoints",
    * )
    */
   use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

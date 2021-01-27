@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API Hotels",
-        "description": "Collection POSTMAN - COLLECTION POSTMAN",
+        "description": "Collection POSTMAN - LINK COLLECTION POSTMAN",
         "version": "0.1"
     },
     "paths": {
@@ -127,59 +127,6 @@
                 }
             }
         },
-        "/api/login/{provider}/callback": {
-            "post": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "Login to Social Network provider => (facebook or google)",
-                "description": "Login user to social network",
-                "operationId": "provider",
-                "parameters": [
-                    {
-                        "name": "provider",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "facebook",
-                                "google"
-                            ]
-                        }
-                    },
-                    {
-                        "name": "code",
-                        "in": "query",
-                        "description": "access token social network facebook or google",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            }
-        },
         "/api/logout": {
             "post": {
                 "tags": [
@@ -215,17 +162,50 @@
                 ]
             }
         },
-        "/api/password/email": {
+        "/api/hotels": {
+            "get": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Get all hotels",
+                "description": "Get all hotels",
+                "operationId": "",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
-                    "Auth"
+                    "Hotels"
                 ],
-                "summary": "Forgot Password",
-                "description": "Send email to user",
-                "operationId": "forgot",
+                "summary": "Create hotels",
+                "description": "Create hotels",
+                "operationId": "",
                 "parameters": [
                     {
-                        "name": "email",
+                        "name": "name",
                         "in": "query",
                         "required": true,
                         "schema": {
@@ -252,44 +232,154 @@
                     "403": {
                         "description": "Forbidden"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/api/password/reset": {
-            "post": {
+        "/api/hotels/{id}": {
+            "get": {
                 "tags": [
-                    "Auth"
+                    "Hotels"
                 ],
-                "summary": "Reset Password",
-                "description": "Reset password to user",
-                "operationId": "reset",
+                "summary": "Find hotel id",
+                "description": "Find hotel id",
+                "operationId": "id",
                 "parameters": [
                     {
-                        "name": "email",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Delete hotels for id",
+                "description": "Delete hotels for id",
+                "operationId": "id",
+                "parameters": [
+                    {
+                        "name": "id",
                         "in": "query",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
                         }
                     },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
                     {
-                        "name": "password",
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/rooms": {
+            "get": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Get all rooms",
+                "description": "Get all rooms",
+                "operationId": "",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Create rooms",
+                "description": "Create rooms",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "hotel_id",
                         "in": "query",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
                         }
                     },
                     {
-                        "name": "password_confirmation",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "token",
+                        "name": "name",
                         "in": "query",
                         "required": true,
                         "schema": {
@@ -316,7 +406,100 @@
                     "403": {
                         "description": "Forbidden"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/rooms/{id}": {
+            "get": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Find room id",
+                "description": "Find room id",
+                "operationId": "id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Rooms"
+                ],
+                "summary": "Delete rooms for id",
+                "description": "Delete rooms for id",
+                "operationId": "id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/users": {
@@ -388,6 +571,51 @@
                     }
                 ]
             }
+        },
+        "/api/user-room": {
+            "post": {
+                "tags": [
+                    "UserRooms"
+                ],
+                "summary": "Create user rooms",
+                "description": "Create user rooms",
+                "operationId": "",
+                "parameters": [
+                    {
+                        "name": "room_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
@@ -409,6 +637,18 @@
         {
             "name": "Users",
             "description": "Users endpoints"
+        },
+        {
+            "name": "Hotels",
+            "description": "Hotels endpoints"
+        },
+        {
+            "name": "Rooms",
+            "description": "Rooms endpoints"
+        },
+        {
+            "name": "UserRooms",
+            "description": "UserRooms endpoints"
         }
     ],
     "security": [

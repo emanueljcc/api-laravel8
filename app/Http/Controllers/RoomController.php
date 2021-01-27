@@ -9,7 +9,46 @@ use App\Models\Room;
 
 class RoomController extends Controller
 {
-    // TODO: AGREGAR DOC swagger
+    /**
+     * @OA\Get(
+     ** path="/api/rooms",
+      *   tags={"Rooms"},
+      *   summary="Get all rooms",
+      *   description="Get all rooms",
+      *   operationId="",
+      *
+      *   @OA\Response(
+      *      response=200,
+      *       description="Success",
+      *      @OA\MediaType(
+      *           mediaType="application/json",
+      *      )
+      *   ),
+      *   @OA\Response(
+      *      response=401,
+      *       description="Unauthenticated"
+      *   ),
+      *   @OA\Response(
+      *      response=400,
+      *      description="Bad Request"
+      *   ),
+      *   @OA\Response(
+      *      response=404,
+      *      description="Not found"
+      *   ),
+      *   @OA\Response(
+      *      response=403,
+      *      description="Forbidden"
+      *   ),
+      *   security={{"bearerAuth":{}}}
+      *)
+      **/
+
+    /**
+     * get all rooms api.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
       try {
@@ -21,6 +60,55 @@ class RoomController extends Controller
       }
     }
 
+    /**
+     * @OA\Get(
+     ** path="/api/rooms/{id}",
+    *   tags={"Rooms"},
+    *   summary="Find room id",
+    *   description="Find room id",
+    *   operationId="id",
+    *
+    *   @OA\Parameter(
+    *      name="id",
+    *      in="path",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="integer",
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=200,
+    *       description="Success",
+    *      @OA\MediaType(
+    *           mediaType="application/json",
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=401,
+    *       description="Unauthenticated"
+    *   ),
+    *   @OA\Response(
+    *      response=400,
+    *      description="Bad Request"
+    *   ),
+    *   @OA\Response(
+    *      response=404,
+    *      description="Not found"
+    *   ),
+    *   @OA\Response(
+    *      response=403,
+    *      description="Forbidden"
+    *   ),
+    *   security={{"bearerAuth":{}}}
+    *)
+    * @param mixed $id
+    **/
+
+    /**
+     * Room find api.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function find(Request $request)
     {
       try {
@@ -37,6 +125,62 @@ class RoomController extends Controller
       }
     }
 
+    /**
+     * @OA\Post(
+     ** path="/api/rooms",
+    *   tags={"Rooms"},
+    *   summary="Create rooms",
+    *   description="Create rooms",
+    *   operationId="",
+    *
+    * @OA\Parameter(
+    *      name="hotel_id",
+    *      in="query",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="integer"
+    *      )
+    *   ),
+    * @OA\Parameter(
+    *      name="name",
+    *      in="query",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="string"
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=200,
+    *       description="Success",
+    *      @OA\MediaType(
+    *           mediaType="application/json",
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=401,
+    *       description="Unauthenticated"
+    *   ),
+    *   @OA\Response(
+    *      response=400,
+    *      description="Bad Request"
+    *   ),
+    *   @OA\Response(
+    *      response=404,
+    *      description="Not found"
+    *   ),
+    *   @OA\Response(
+    *      response=403,
+    *      description="Forbidden"
+    *   ),
+    *   security={{"bearerAuth":{}}}
+    *)
+    **/
+
+    /**
+     * Rooms create api.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function store(CreateRoomRequest $request)
     {
       try {
@@ -57,6 +201,54 @@ class RoomController extends Controller
       }
     }
 
+    /**
+     * @OA\Delete(
+     ** path="/api/rooms/{id}",
+    *   tags={"Rooms"},
+    *   summary="Delete rooms for id",
+    *   description="Delete rooms for id",
+    *   operationId="id",
+    *
+    * @OA\Parameter(
+    *      name="id",
+    *      in="query",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="integer"
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=200,
+    *       description="Success",
+    *      @OA\MediaType(
+    *           mediaType="application/json",
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=401,
+    *       description="Unauthenticated"
+    *   ),
+    *   @OA\Response(
+    *      response=400,
+    *      description="Bad Request"
+    *   ),
+    *   @OA\Response(
+    *      response=404,
+    *      description="Not found"
+    *   ),
+    *   @OA\Response(
+    *      response=403,
+    *      description="Forbidden"
+    *   ),
+    *   security={{"bearerAuth":{}}}
+    *)
+    **/
+
+    /**
+     * Rooms delete api.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function remove(Request $request)
     {
       try {

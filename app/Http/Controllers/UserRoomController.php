@@ -3,13 +3,60 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRoomRequest;
-use App\Models\Room;
-use App\Models\UserRoom;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserRoom;
+use App\Models\Room;
 
 class UserRoomController extends Controller
 {
-    // TODO: AGRGEAR A LA DOC SWAGGER
+    /**
+     * @OA\Post(
+     ** path="/api/user-room",
+    *   tags={"UserRooms"},
+    *   summary="Create user rooms",
+    *   description="Create user rooms",
+    *   operationId="",
+    *
+    * @OA\Parameter(
+    *      name="room_id",
+    *      in="query",
+    *      required=true,
+    *      @OA\Schema(
+    *           type="integer"
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=200,
+    *       description="Success",
+    *      @OA\MediaType(
+    *           mediaType="application/json",
+    *      )
+    *   ),
+    *   @OA\Response(
+    *      response=401,
+    *       description="Unauthenticated"
+    *   ),
+    *   @OA\Response(
+    *      response=400,
+    *      description="Bad Request"
+    *   ),
+    *   @OA\Response(
+    *      response=404,
+    *      description="Not found"
+    *   ),
+    *   @OA\Response(
+    *      response=403,
+    *      description="Forbidden"
+    *   ),
+    *   security={{"bearerAuth":{}}}
+    *)
+    **/
+
+    /**
+     * UserRooms create api.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function store(CreateUserRoomRequest $request)
     {
       try {
