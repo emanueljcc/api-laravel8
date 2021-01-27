@@ -44,4 +44,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/', 'App\Http\Controllers\RoomController@store')->middleware('api.admin')->name('rooms.store');
     Route::delete('/{id}', 'App\Http\Controllers\RoomController@remove')->middleware('api.admin')->name('rooms.remove');
   });
+
+  Route::prefix('user-room')->group(function () {
+    Route::post('/', 'App\Http\Controllers\UserRoomController@store')->name('userRoom.store');
+  });
 });

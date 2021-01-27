@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
       $this->call(RolesSeeder::class);
       $this->call(UsersSeeder::class);
       $this->call(HotelsSeeder::class);
+      $this->call(RoomsSeeder::class);
+      $this->call(UserRoomsSeeder::class);
 
       Schema::enableForeignKeyConstraints();
     }

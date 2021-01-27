@@ -6,19 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class UserRoom extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-      'hotel_id',
-      'name'
+      'room_id',
+      'user_id'
     ];
 
-    public function hotel()
+    public function user()
     {
-      return $this->belongsTo(Hotel::class);
+      return $this->belongsTo(User::class);
+    }
+
+    public function room()
+    {
+      return $this->belongsTo(Room::class);
     }
 }

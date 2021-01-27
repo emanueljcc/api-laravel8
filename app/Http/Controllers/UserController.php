@@ -102,9 +102,10 @@ class UserController extends Controller
   {
     try {
       $user = Auth::user();
-      $billing = $user->billing;
+      $user->role;
+      $user->assignedRoom->room->hotel;
 
-      if ($billing) $user['billing'] = $billing;
+      // TODO: ver si dejar billing para pagos de habitaciones
 
       return $this->responseJson(200, 'Success.', $user);
     } catch (\Exception $e) {
